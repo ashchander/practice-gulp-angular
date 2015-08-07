@@ -1,13 +1,36 @@
 <!DOCTYPE html>
 <html ng-app="myApp">
 <head>
-    <script src="scripts/angular.min.js"></script>
-    <script src="app/app.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="scripts/angular.min.js"></script>
+  <script src="app/app.js"></script>
 </head>
 <body>
-<h2>AngularJS TypeScript App</h2>
-<div ng-controller="MainCtrl as mc">
-    {{mc.message}}
-</div>
+  <div class="container" ng-controller="MainCtrl as mc">
+    <div class="starter-template">
+      <h1>AngularJS TypeScript App <small>{{mc.message}}</small></h1>
+    </div>
+    <form class="form-horizontal" style="margin-top:20px;">
+      <div class="form-group">
+        <label for="inputName" class="col-sm-2 control-label">Name:</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="inputName" placeholder="John Smith" ng-model="mc.name">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" class="btn btn-primary" ng-click="mc.AddPerson()">Add</button>
+        </div>
+      </div>
+    </form>
+    <p>
+      <ul>
+        <li ng-repeat="person in mc.persons track by $index">Hello {{ person }}!</li>
+      </ul>
+    </p>
+  </div>
 </body>
 </html>
