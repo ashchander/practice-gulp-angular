@@ -9,11 +9,8 @@ module MainFeature {
 
         constructor($scope: ng.IScope){
             this.scope = $scope;
-            this.SetMessage('Hello World');
+            this.message = 'Hello World';
             this.persons = [];
-        }
-        public SetMessage(msg: string):void{
-            this.message = msg;
         }
 
         public AddPerson():void{

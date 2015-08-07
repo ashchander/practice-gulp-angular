@@ -8,6 +8,10 @@ gulp.task('clean', function() {
         .pipe(clean());
 });
 
+gulp.task('watchTS', function() {
+  gulp.watch('public/**/*.ts', ['clean', 'compile']);
+});
+
 gulp.task('compile', function () {
   var tsResult = gulp.src(['public/**/*.ts'])
     .pipe(ts({
@@ -17,7 +21,7 @@ gulp.task('compile', function () {
   return tsResult.js.pipe(gulp.dest('public/app'));
 });
 
-gulp.task('default', ['clean', 'compile'], function() {
+gulp.task('default', ['clean', 'compile', 'watchTS'], function() {
   return nodemon({
       script: 'server.js'
     , ext: 'js html'
