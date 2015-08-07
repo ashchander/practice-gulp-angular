@@ -13,6 +13,7 @@ module MainFeature {
     constructor($http: ng.IHttpService, $q: ng.IQService) {
       this.baseUrl = '/api';
       this.http = $http;
+      this.q = $q;
     }
 
     public getExistingPersons(): ng.IPromise<Array<string>>{
