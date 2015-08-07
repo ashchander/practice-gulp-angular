@@ -5,6 +5,10 @@ module MainFeature {
       message: string;
   }
 
+  export interface PersonsResponse {
+    data: Array<string>
+  }
+
   export class MainFactory {
     private baseUrl: string;
     private http: ng.IHttpService;
@@ -16,10 +20,10 @@ module MainFeature {
       this.q = $q;
     }
 
-    public getExistingPersons(): ng.IPromise<Array<string>>{
+    public getExistingPersons(): ng.IPromise<any>{
       var defer = this.q.defer();
       this.http.get(this.baseUrl).
-        then(function(response: Array<string>) {
+        then(function(response: PersonsResponse) {
           defer.resolve(response);
         }, function(response: FactoryError) {
           defer.reject(response);

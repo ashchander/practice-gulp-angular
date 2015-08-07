@@ -21,8 +21,11 @@ module MainFeature {
         }
 
         public loadExistingUsers():void {
-          this.factory.getExistingPersons().then(function(response: Array<string>){
-            this.persons.push(response);
+          var p = this.persons
+          this.factory.getExistingPersons().then(function(response: MainFeature.PersonsResponse){
+            for(var i=0; i < response.data.length; i++){
+                p.push(response.data[i]);
+            }
           });
         }
     }
